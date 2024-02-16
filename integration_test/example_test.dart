@@ -8,12 +8,14 @@ import 'package:patrol/patrol.dart';
 void main() {
   patrolTest(
     'counter state is the same after going to home and switching apps',
-    ($) async {
+    (tester) async {
       // Replace later with your app's main widget
-      await $.pumpWidgetAndSettle(MyApp());
-      await Future.delayed(Duration(seconds: 30));
+      await tester.pumpWidgetAndSettle(MyApp());
 
-      expect($('Flutter Demo Home Page'), findsOneWidget);
+      expect(tester('Flutter Demo Home Page'), findsOneWidget);
+
+      await tester.tap(find.byKey(Key('incrementButton')));
+      await tester.native.grantPermissionOnlyThisTime();
     },
   );
 }

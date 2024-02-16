@@ -3,6 +3,8 @@ PODS:
   - Flutter (1.0.0)
   - integration_test (0.0.1):
     - Flutter
+  - local_auth_ios (0.0.1):
+    - Flutter
   - patrol (0.0.1):
     - CocoaAsyncSocket (~> 7.6)
     - Flutter
@@ -11,6 +13,7 @@ PODS:
 DEPENDENCIES:
   - Flutter (from `Flutter`)
   - integration_test (from `.symlinks/plugins/integration_test/ios`)
+  - local_auth_ios (from `.symlinks/plugins/local_auth_ios/ios`)
   - patrol (from `.symlinks/plugins/patrol/darwin`)
 
 SPEC REPOS:
@@ -22,6 +25,8 @@ EXTERNAL SOURCES:
     :path: Flutter
   integration_test:
     :path: ".symlinks/plugins/integration_test/ios"
+  local_auth_ios:
+    :path: ".symlinks/plugins/local_auth_ios/ios"
   patrol:
     :path: ".symlinks/plugins/patrol/darwin"
 
@@ -29,6 +34,7 @@ SPEC CHECKSUMS:
   CocoaAsyncSocket: 065fd1e645c7abab64f7a6a2007a48038fdc6a99
   Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
   integration_test: 13825b8a9334a850581300559b8839134b124670
+  local_auth_ios: 1ba1475238daa33a6ffa2a29242558437be435ac
   patrol: 3e21d514020dbee24b3e3383caac9e8e051292ac
 
 PODFILE CHECKSUM: abcbda06d51ed48471b8c5c79e9adf6535898ac7
