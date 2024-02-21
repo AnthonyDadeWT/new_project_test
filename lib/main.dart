@@ -69,21 +69,6 @@ class _MyHomePageState extends State<MyHomePage> {
       // called again, and so nothing would appear to happen.
       _counter++;
     });
-    final LocalAuthentication auth = LocalAuthentication();
-    try {
-      final bool didAuthenticate = await auth.authenticate(
-          localizedReason: 'Please authenticate with biometrics',
-          options: const AuthenticationOptions(useErrorDialogs: true));
-      // ···
-    } on PlatformException catch (e) {
-      if (e.code == auth_error.notAvailable) {
-        
-      } else if (e.code == auth_error.notEnrolled) {
-        // ...
-      } else {
-        // ...
-      }
-    }
   }
 
   @override
@@ -130,7 +115,39 @@ class _MyHomePageState extends State<MyHomePage> {
               '$_counter',
               style: Theme.of(context).textTheme.headlineMedium,
             ),
+            GestureDetector(
+              key: Key('biometrics'),
+              onTap: () async {
+                final LocalAuthentication localAuth = LocalAuthentication();
+                bool authenticated = false;
+                try {
+                  authenticated = await localAuth.authenticate(
+                      localizedReason: "Login with biometrics test",
+                      options: const AuthenticationOptions(
+                        stickyAuth: true,
+                        biometricOnly: true,
+                      ));
+                } on PlatformException catch (e) {
+                  if (e.code == auth_error.notAvailable) {
+                    print("The user's biometric did not match and they cancelled the flow");
+                  } else if (e.code == auth_error.notEnrolled) {
+                    print("The device is not enrolled to use biometrics");
+                  } else {
+                    print("Ran into an error:");
+                    print(e.code);
+                  }
+                }
+                if (authenticated == true) {
+                  print("successfully ran biometric authentication");
+                }
+              },
+              child: Text('Login with Biometrics', 
+              style: TextStyle(fontSize: 25),
+              ),
+            ),
+            
           ],
+          
         ),
       ),
       floatingActionButton: FloatingActionButton(
