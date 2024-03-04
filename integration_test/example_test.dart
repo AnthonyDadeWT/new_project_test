@@ -7,7 +7,7 @@ import 'package:patrol/patrol.dart';
 
 void main() {
   /*patrolTest(
-    'patrol test 1',
+    'patrol,
     (tester) async {
       // Replace later with your app's main widget
       await tester.pumpWidgetAndSettle(MyApp());
