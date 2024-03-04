@@ -1,6 +1,6 @@
 # myequifax
 
-A new Flutter project. Testing automatic build
+A new Flutter project.
 
 ## Getting Started
 
