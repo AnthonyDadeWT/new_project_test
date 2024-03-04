@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:local_auth/local_auth.dart';
 import 'package:local_auth/error_codes.dart' as auth_error;
+import 'package:myequifax/page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -115,7 +116,17 @@ class _MyHomePageState extends State<MyHomePage> {
               '$_counter',
               style: Theme.of(context).textTheme.headlineMedium,
             ),
-            GestureDetector(
+            ElevatedButton(
+              key: Key("nextPageButton"),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => NewPage()),
+                );
+              },
+              child: Text('Next Screen'),
+            ),
+            /*GestureDetector(
               key: Key('biometrics'),
               onTap: () async {
                 final LocalAuthentication localAuth = LocalAuthentication();
@@ -143,11 +154,9 @@ class _MyHomePageState extends State<MyHomePage> {
               },
               child: Text('Login with Biometrics', 
               style: TextStyle(fontSize: 25),
-              ),
-            ),
-            
+              ),)
+            */
           ],
-          
         ),
       ),
       floatingActionButton: FloatingActionButton(
