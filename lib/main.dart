@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:local_auth/local_auth.dart';
+import 'package:local_auth/error_codes.dart' as auth_error;
+import 'package:myequifax/page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -57,7 +61,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
-  void _incrementCounter() {
+  void _incrementCounter() async {
     setState(() {
       // This call to setState tells the Flutter framework that something has
       // changed in this State, which causes it to rerun the build method below
@@ -112,6 +116,46 @@ class _MyHomePageState extends State<MyHomePage> {
               '$_counter',
               style: Theme.of(context).textTheme.headlineMedium,
             ),
+            ElevatedButton(
+              key: Key("nextPageButton"),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => NewPage()),
+                );
+              },
+              child: Text('Next Screen'),
+            ),
+            /*GestureDetector(
+              key: Key('biometrics'),
+              onTap: () async {
+                final LocalAuthentication localAuth = LocalAuthentication();
+                bool authenticated = false;
+                try {
+                  authenticated = await localAuth.authenticate(
+                      localizedReason: "Login with biometrics test",
+                      options: const AuthenticationOptions(
+                        stickyAuth: true,
+                        biometricOnly: true,
+                      ));
+                } on PlatformException catch (e) {
+                  if (e.code == auth_error.notAvailable) {
+                    print("The user's biometric did not match and they cancelled the flow");
+                  } else if (e.code == auth_error.notEnrolled) {
+                    print("The device is not enrolled to use biometrics");
+                  } else {
+                    print("Ran into an error:");
+                    print(e.code);
+                  }
+                }
+                if (authenticated == true) {
+                  print("successfully ran biometric authentication");
+                }
+              },
+              child: Text('Login with Biometrics', 
+              style: TextStyle(fontSize: 25),
+              ),)
+            */
           ],
         ),
       ),
