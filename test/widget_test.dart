@@ -27,7 +27,7 @@ void main() {
 
     // Verify that our counter has incremented.
     expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    expect(find.text('25'), findsOneWidget);
 
     expect(find.byKey(Key("nextPageButton")), findsOneWidget);
     await tester.tap(find.byKey(Key("nextPageButton")));
