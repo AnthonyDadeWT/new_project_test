@@ -17,6 +17,11 @@ class NewPageState extends State<NewPage> {
   }
 
   @override
+  dispose() {
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
